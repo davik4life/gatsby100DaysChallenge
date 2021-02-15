@@ -1,13 +1,17 @@
+require("dotenv").config({
+	path: `.env.${process.env.NODE_ENV}`
+});
+
 module.exports = {
 	siteMetadata: {
 		title: "GatsbyV1",
 	},
 	plugins: [
 		{
-			resolve: "gatsby-source-contentful",
+			resolve: `gatsby-source-contentful`,
 			options: {
-				accessToken: "ZHk5Tusabn8NWQImr4pb5KD-xvIrqn5WvuTTwB6fOnY",
-				spaceId: "idn2uc3bkd3u",
+				spaceId: process.env.CONTENTFUL_SPACE_ID,
+				accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 			},
 		},
 		"@chakra-ui/gatsby-plugin",
@@ -28,9 +32,9 @@ module.exports = {
 			resolve: "gatsby-source-formium",
 			options: {
 				// Get your projectId from https://dashboard.formium.io
-				projectId: "6029209a4da96d0001a0d162",
+				projectId: process.env.GATSBY_FORMIUM_PROJECTID,
 				// Generate a personal access token by going to https://dashboard.formium.io/account#tokens
-				accessToken: "OVy3dECb4LXdfCnqNzDfJs2AZC0SSyAeF2wgVIgF2QJZ3YBNeVbuTQYaC6wb2W9f",
+				accessToken: process.env.FORMIUM_TOKEN,
 			},
 		},
 	],
